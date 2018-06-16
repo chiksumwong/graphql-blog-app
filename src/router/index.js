@@ -9,7 +9,7 @@ import LogIn from '@/components/Admin/LogIn'
 
 import Posts from '@/components/View/Posts'
 import Users from '@/components/Admin/Users'
-
+import UserDetail from '@/components/Admin/UserDetail'
 
 Vue.use(Router)
 
@@ -40,6 +40,12 @@ export default new Router({
       path: '/admin/users',
       name: 'Users',
       component: Users
+    },
+    {
+      path: '/admin/users/:id',
+      name: 'UserDetail',
+      component: UserDetail,
+      props: true
     },
   ]
 })
