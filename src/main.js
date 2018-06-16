@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import 'bulma/css/bulma.css'
+
+
 /*
 *   Apollo相關擴展包實現與GraphQL服務端的交互
 */
