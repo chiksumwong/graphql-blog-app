@@ -30,6 +30,8 @@ const apolloClient = new ApolloClient({
 // install vue plugin
 Vue.use(VueApollo)
 
+
+/* Create A Provider */
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient
 })
