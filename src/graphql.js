@@ -16,7 +16,6 @@ export const SIGNUP_MUTATION = gql`
         }
     }
 `
-
 export const LOGIN_MUTATION = gql`
     mutation LoginMutation($email: String!, $password: String!) {
         login(
@@ -40,7 +39,6 @@ export const ALL_USERS_QUERY = gql`
         }
     }
 `
-
 export const USER_QUERY = gql`
     query UserQueryById($id: String) {
         user(id: $id) {
@@ -54,6 +52,7 @@ export const USER_QUERY = gql`
     }
 `
 
+
 export const ALL_POSTS_QUERY = gql`
     query AllPostsQuery {
         allPosts {
@@ -65,7 +64,20 @@ export const ALL_POSTS_QUERY = gql`
         }
     }
 `
-
+export const POST_QUERY = gql`
+    query PostQuery($id: String!) {
+        post(id: $id) {
+            id
+            title
+            content
+            user {
+                id
+                name
+                email
+            }
+        }
+    }
+`
 export const ADD_POST_MUTATION = gql`
     mutation AddPostMutation($title: String!, $content: String!) {
         addPost(
