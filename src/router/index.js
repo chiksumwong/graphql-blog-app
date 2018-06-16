@@ -8,11 +8,13 @@ import SignUp from '@/components/Admin/SignUp'
 import LogIn from '@/components/Admin/LogIn'
 
 import Posts from '@/components/View/Posts'
+import Users from '@/components/Admin/Users'
 
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -33,6 +35,11 @@ export default new Router({
       path: '/admin/posts',
       name: 'Posts',
       component: Posts
+    },
+    {
+      path: '/admin/users',
+      name: 'Users',
+      component: Users
     },
   ]
 })

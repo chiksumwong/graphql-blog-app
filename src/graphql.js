@@ -30,3 +30,13 @@ export const LOGIN_MUTATION = gql`
         }
     }
 `
+
+export const ALL_USERS_QUERY = gql`
+    query AllUsersQuery {
+        allUsers {
+            id
+            name
+            email
+        }
+    }
+`
