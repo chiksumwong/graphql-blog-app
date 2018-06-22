@@ -26,10 +26,15 @@
             <div class="field is-grouped">
 
               <p class="control">
-                <router-link class="button is-primary" to="/logIn">LOGIN</router-link>
+                <router-link class="button is-primary" to="/logIn" v-if="!isLogin">LOGIN</router-link>
               </p>
+
               <p class="control">
-                <router-link class="button is-primary" to="/signup">REGISTRATION</router-link>
+                <button class="button is-primary" @click="logout" v-if="isLogin">LOGOUT</button>
+              </p>
+
+              <p class="control">
+                <router-link class="button is-primary" to="/signup" v-if="!isLogin">REGISTRATION</router-link>
               </p>
 
             </div>
@@ -47,8 +52,45 @@
 </template>
 
 <script>
+  import gql from 'graphql-tag'
+
   export default {
-    name: 'App'
+    name: 'App',
+
+    data() {
+      return {}
+    },
+
+    mounted () {
+    },
+
+    computed: {
+      isLogin: function () {
+        if (localStorage.getItem('blog-app-token') != 0) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    },
+
+    methods: {
+      logout() {
+        this.$apollo.mutate({
+            mutation: gql `mutation logout($Authorization : String!){
+                logout(Authorization: $Authorization)
+              }`,
+            variables: {
+              Authorization: localStorage.getItem('blog-app-token')
+            }
+          })
+          .then(response => {
+            localStorage.setItem('blog-app-token', 0)
+            this.$router.replace('/')
+          })
+      },
+
+    }
   }
 
 </script>
