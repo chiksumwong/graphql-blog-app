@@ -58,18 +58,17 @@
     name: 'App',
 
     data() {
-      return {}
+      return {
+        isAuthorization:false
+      }
     },
 
-    mounted () {
-    },
-
-    computed: {
-      isLogin: function () {
+    mounted: {
+      CheckIsAuth(){
         if (localStorage.getItem('blog-app-token') != 0) {
-          return true;
+          return this.isAuthorization == true;
         } else {
-          return false;
+          return this.isAuthorization == false;
         }
       }
     },
@@ -85,7 +84,7 @@
             }
           })
           .then(response => {
-            localStorage.setItem('blog-app-token', 0)
+            this.isAuthorization == false
             this.$router.replace('/')
           })
       },

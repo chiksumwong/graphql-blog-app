@@ -60,10 +60,15 @@ const apolloProvider = new VueApollo({
 })
 
 
+/* vuex */
+import store from './store'
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   apolloProvider,
   components: { App },
   template: '<App/>'
